@@ -125,7 +125,7 @@ let mut a = remote!("127.0.0.1:3334", A::new, A);
 `setup_proc_macros!();` imports relevant hidden crates for using umi macros.
 
 ## Task
-- Please refactor the single node reminder application `./applications/examples/ready_reminder_client.rs` using the UMI library to run on multiple nodes. The `ReadyReminderServer` should run on a node, accepting requests from client(s) nodes that submit or extract events.
+- Please refactor the single node reminder application `./applications/examples/ready_reminder_callback_client_single.rs` using the UMI library to run on multiple nodes. The `ReadyReminderServer` should run on a node, accepting requests from client(s) nodes that submit events, and notifying clients when events are ready.
     - You should first consider modifying `./applications/src/reminder/ready_reminder_callback_server.rs`.
     
 <details><summary> Need a hint? </summary>
