@@ -109,11 +109,11 @@ pub fn new() -> Self {
 ```
 This allows `new()` to be send in the entry point:
 ```rust
-let mut record = remote!("127.0.0.1:3334", A::new, A);
+let mut a = remote!("127.0.0.1:3334", A::new, A);
 ```
 
 #### __`umi_macro_proc::umi_struct_method(option)`__
-`#[umi_struct_method]` makes a struct method able to be also invoked on a proxy. `#[umi_struct_method(false)]` specifically indicates that the return value is sent back by copy/move and it **does not** have a proxy representation. An example usage is in `student.rs`:
+`#[umi_struct_method]` makes a struct method able to be also invoked on a proxy. `#[umi_struct_method(false)]` specifically indicates that the return value is sent back by copy/move and it **does not** have a proxy representation.
 
 #### __`umi_macro_proc::setup_packages`__ 
 `setup_packages!();` imports relevant hidden crates for message serialisation.
