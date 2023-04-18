@@ -85,7 +85,7 @@ A `CallBack` defines the callback function, it works as a closure. It contains t
     ...
     remote!(callback_addr, my_callback);
     ```
-    This will pass the callback function `my_callback` on the node with address `callback_addr`.
+    This will pass the callback function `my_callback` to the node with address `callback_addr`.
 #### __`umi::register`__
 `register!(...)` requires `std::any::Any` to be imported. It is used to register methods in the `RegistryTable` for remote invocation.
 ```rust
