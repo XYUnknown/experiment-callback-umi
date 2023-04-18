@@ -8,7 +8,7 @@ pub struct CallBack {
 }
 
 impl CallBack {
-    pub fn new(content: String) -> CallBack { // time_to_due is in millisecondsfrom now
+    pub fn new(content: String) -> CallBack { 
         CallBack {
             content: content,
         }

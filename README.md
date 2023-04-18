@@ -24,6 +24,12 @@ This repository is prepared for evaluating the effort of using our UMI library t
     Task Hello World! is due
     Task Goodbye World! is due
     ```
+
+- __Please only work and modify code provided in the `./applications/` directory and please do not modify the provided library code in `./src/`__
+
+## The Design of the Multiple-Node Callback Reminder Application
+![](./ReminderDesign.png) 
+
 ## Instructions of Using UMI Library
 ### UMI Structs
 #### __`umi::endpoint::UMIEndpoint`__
@@ -53,6 +59,9 @@ A `ResourceTable` is a type alias of a `std::collections::HashMap`.
 pub type RegistryTable = HashMap<&'static str, Box<dyn GenCall>>;
 ```
 
+### __`umi::proxy_lib::callback::CallBack`__
+A `CallBack` defines the callback function, it works as a closure. It contains the data of a event. In this application, a `CallBack` should be executed when an event is due. It can be passed as an argument of a method. You __do not__ need to register a callback function to be able to execute it.
+
 ### UMI Macros
 #### __`umi::remote`__
 `remote!(...)` is used:
@@ -65,15 +74,18 @@ pub type RegistryTable = HashMap<&'static str, Box<dyn GenCall>>;
     let mut a = remote!("127.0.0.1:3334", A::new, A);
     ```
     This creates a `A` on the server with the address `127.0.0.1:3334`. It returns a proxy `a` to the client. On the client, methods can be directly invoked on this proxy. The actual computation will be sent to the server and the result of the computation will be sent back to the client.
-- to execute a callback on a client.
+- to pass a callback function to a client and execute it. A `CallBack` can be passed into `remote!`
     ```rust
     remote!(addr, callback);
     ```
     An example usage is:
     ```rust
-    remote!(client_addr, my_callback);
+    let my_callback = event.callback;
+    let callback_addr = /* the callback address of the event */;
+    ...
+    remote!(callback_addr, my_callback);
     ```
-    This will execute the callback function `my_callback` on the client node with address `client_addr`.
+    This will execute the callback function `my_callback` on the node with address `callback_addr`.
 #### __`umi::register`__
 `register!(...)` requires `std::any::Any` to be imported. It is used to register methods in the `RegistryTable` for remote invocation.
 ```rust
