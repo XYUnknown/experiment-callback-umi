@@ -74,7 +74,7 @@ A `CallBack` defines the callback function, it works as a closure. It contains t
     let mut a = remote!("127.0.0.1:3334", A::new, A);
     ```
     This creates a `A` on the server with the address `127.0.0.1:3334`. It returns a proxy `a` to the client. On the client, methods can be directly invoked on this proxy. The actual computation will be sent to the server and the result of the computation will be sent back to the client.
-- to pass a callback function to a client and execute it. A `CallBack` can be passed into `remote!`
+- to pass a callback function to a node and the callback function will then be executed by the node. A `CallBack` can be passed into `remote!`
     ```rust
     remote!(addr, callback);
     ```
@@ -85,7 +85,7 @@ A `CallBack` defines the callback function, it works as a closure. It contains t
     ...
     remote!(callback_addr, my_callback);
     ```
-    This will execute the callback function `my_callback` on the node with address `callback_addr`.
+    This will pass the callback function `my_callback` on the node with address `callback_addr`.
 #### __`umi::register`__
 `register!(...)` requires `std::any::Any` to be imported. It is used to register methods in the `RegistryTable` for remote invocation.
 ```rust
