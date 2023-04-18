@@ -6,6 +6,7 @@ This repository is prepared for evaluating the effort of using our UMI library t
     - `./applications/examples/` contains application code to be executed.
     - `./applications/src/` contains stucts definitions for single and mutiple node applications.
 - Directories `./src/` and `./umi_macros/` contains UMI library code. Please do not modify code under these directories.
+- I provided solutions for the previous participants. There are `./applications/src/reminder/ready_reminder_callback_client_single.rs`, `./applications/examples/ready_reminder_cb_umi_server.rs` and `./applications/examples/ready_reminder_cb_umi_client.rs`. __Please do not look at them for your first attempt.__
 
 ## Getting Started
 - Forking the repository.
